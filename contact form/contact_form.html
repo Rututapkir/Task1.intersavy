@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Contact Form</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Contact Us</h2>
+        <form id="contactForm" method="post">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="subject">Subject:</label>
+            <input type="text" id="subject" name="subject" required>
+
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" required></textarea>
+
+            <button id="btn"> Send</button>
+        </form>
+    </div>
+    <script src="https://smtpjs.com/v3/smtp.js">
+    </script>
+    <script>
+        var btn = document.getElementById('btn');
+        btn.addEventListener('click',function(e){
+            e.preventDefault()
+            var name = document.getElementById('name').value;
+            var email = document.getElementById('email').value;
+            var subject = document.getElementById('subject').value;
+            var message = document.getElementById('message').value;
+            var body = 'name: '+name +'<br/> email: '+email +'<br/> subject: '
+            +subject +'<br/> message :' + message;
+
+                     Email.send({
+                      SecureToken : "d19736f8-c57a-477c-be95-074898b62462C973D7AD-F097-4B95-91F4-40ABC5567812",
+                       To : 'rututapkir86@gmail.com',
+                        From : "rutujatapkir8@gmail.com",
+                        Subject : "contact message",
+                        Body : body
+                        }).then(
+                         message => alert(message)
+                                   );
+        })
+    </script>
+</body>
+</html>
